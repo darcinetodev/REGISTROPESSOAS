@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="352.0" prefWidth="484.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="registropessoas.controller.FXMLRegEnderecoController">
+   <children>
+      <TitledPane animated="false" collapsible="false" layoutX="14.0" layoutY="14.0" prefHeight="325.0" prefWidth="296.0" text="Cadastrar Endereço">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TextField fx:id="tlb_cep" alignment="CENTER" layoutX="87.0" layoutY="11.0" prefHeight="25.0" prefWidth="49.0" promptText="00000" />
+                  <TextField fx:id="tlb_logradouro" layoutX="87.0" layoutY="47.0" prefHeight="25.0" prefWidth="195.0" />
+                  <TextField fx:id="tlb_numero" layoutX="87.0" layoutY="83.0" prefHeight="25.0" prefWidth="49.0" />
+                  <TextField fx:id="tlb_bairro" layoutX="87.0" layoutY="119.0" prefHeight="25.0" prefWidth="195.0" />
+                  <TextField fx:id="tlb_cidade" layoutX="87.0" layoutY="155.0" prefHeight="25.0" prefWidth="195.0" />
+                  <TextField fx:id="tlb_estado" layoutX="87.0" layoutY="191.0" prefHeight="25.0" prefWidth="195.0" />
+                  <TextField fx:id="tlb_pais" layoutX="87.0" layoutY="227.0" prefHeight="25.0" prefWidth="195.0" />
+                  <TextField fx:id="tlb_codigo" disable="true" layoutX="87.0" layoutY="263.0" prefHeight="25.0" prefWidth="49.0" />
+                  <Label layoutX="56.0" layoutY="15.0" text="CEP:" />
+                  <Label layoutX="14.0" layoutY="51.0" text="Logradouro:" />
+                  <Label layoutX="32.0" layoutY="87.0" text="Número:" />
+                  <Label layoutX="45.0" layoutY="123.0" text="Bairro:" />
+                  <Label layoutX="39.0" layoutY="159.0" text="Cidade:" />
+                  <Label layoutX="40.0" layoutY="195.0" text="Estado:" />
+                  <Label layoutX="55.0" layoutY="231.0" text="País:" />
+                  <Label layoutX="37.0" layoutY="267.0" text="Código:" />
+                  <TextField fx:id="tlb_cep_digito" alignment="CENTER" layoutX="145.0" layoutY="11.0" prefHeight="25.0" prefWidth="32.0" promptText="000" />
+                  <Label layoutX="138.0" layoutY="15.0" text="-" />
+               </children>
+            </AnchorPane>
+        </content>
+      </TitledPane>
+      <TitledPane animated="false" collapsible="false" layoutX="320.0" layoutY="14.0" prefHeight="325.0" prefWidth="150.0" text="Selecione uma opção">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="134.0">
+               <children>
+                  <Button fx:id="btn_salvar" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="121.0" text="Salvar" />
+                  <Button fx:id="btn_cancelar" layoutX="14.0" layoutY="49.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="121.0" text="Cancelar" />
+               </children>
+            </AnchorPane>
+        </content>
+      </TitledPane>
+   </children>
+</AnchorPane>
