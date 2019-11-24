@@ -19,10 +19,12 @@ public class REGISTROPESSOAS extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLMain.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("view/FXMLMain.fxml"));
         
         Scene scene = new Scene(root);
-        
+        stage.setResizable(false);
+        stage.sizeToScene();
+        stage.setTitle("Registro de Pessoas");
         stage.setScene(scene);
         stage.show();
     }
