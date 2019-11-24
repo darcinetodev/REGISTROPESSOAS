@@ -14,6 +14,7 @@ public class EnderecoModel {
     private int codigo;
     private int cep;
     private String logradouro;
+    private int numero;
     private String bairro;
     private String cidade;
     private String estado;
@@ -41,6 +42,14 @@ public class EnderecoModel {
 
     public void setLogradouro(String logradouro) {
         this.logradouro = logradouro;
+    }
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
     }
 
     public String getBairro() {
