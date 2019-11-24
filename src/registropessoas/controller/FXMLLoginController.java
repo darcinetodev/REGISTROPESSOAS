@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 /**
@@ -20,7 +21,7 @@ import javafx.scene.control.TextField;
 public class FXMLLoginController implements Initializable {
     
     @FXML
-    private TextField tlb_senha;
+    private PasswordField tlb_senha;
 
     @FXML
     private Button btn_entrar;
