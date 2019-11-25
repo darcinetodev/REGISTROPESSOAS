@@ -15,7 +15,7 @@ import java.sql.SQLException;
  */
 public class ConnectionFactory {
     
-    private final String BANCO = "rpdb_basedados";
+    private final String BANCO = "bd_registra_pessoas";
     private final String USUARIO = "root";
     private final String SENHA = "002531";
     
