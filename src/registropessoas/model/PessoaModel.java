@@ -13,27 +13,27 @@ import java.util.Date;
  */
 public class PessoaModel {
     
-    private int id;
-    private int cpf;
+    private int codigo;
+    private Double cpf;
     private String nome;
     private String senha;
     private Date data;
     private String email;
-    private int CodEndereco;
+    private int codEndereco;
 
-    public int getId() {
-        return id;
+    public int getCodigo() {
+        return codigo;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
     }
 
-    public int getCpf() {
+    public Double getCpf() {
         return cpf;
     }
 
-    public void setCpf(int cpf) {
+    public void setCpf(Double cpf) {
         this.cpf = cpf;
     }
 
@@ -70,11 +70,11 @@ public class PessoaModel {
     }
 
     public int getCodEndereco() {
-        return CodEndereco;
+        return codEndereco;
     }
 
-    public void setCodEndereco(int CodEndereco) {
-        this.CodEndereco = CodEndereco;
+    public void setCodEndereco(int codEndereco) {
+        this.codEndereco = codEndereco;
     }
     
 }

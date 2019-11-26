@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="186.0" prefWidth="309.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="registropessoas.controller.FXMLLoginController">
+   <children>
+      <TitledPane animated="false" collapsible="false" prefHeight="186.0" prefWidth="309.0" text="Logar">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="143.0" prefWidth="307.0">
+               <children>
+                  <TextField fx:id="tlb_usuario" layoutX="14.0" layoutY="28.0" prefHeight="25.0" prefWidth="281.0" />
+                  <Button fx:id="btn_entrar" layoutX="247.0" layoutY="121.0" mnemonicParsing="false" text="Entrar" />
+                  <Label layoutX="14.0" layoutY="6.0" text="Usuário" />
+                  <Label layoutX="14.0" layoutY="63.0" text="Senha" />
+                  <PasswordField fx:id="tlb_senha" layoutX="15.0" layoutY="86.0" prefHeight="25.0" prefWidth="281.0" />
+               </children>
+            </AnchorPane>
+        </content>
+      </TitledPane>
+   </children>
+</AnchorPane>

@@ -13,8 +13,7 @@ import java.util.List;
  */
 public interface DAO {
     
-    public List todasPessoas(int id);
-    public Object idPessoa(int id);
+    public List lerTudo();
     public boolean inserir(Object o);
     public boolean editar(Object o);
     public boolean deletar(int id);

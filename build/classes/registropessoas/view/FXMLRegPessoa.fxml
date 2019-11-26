@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="309.0" prefWidth="484.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="registropessoas.controller.FXMLRegPessoaController">
+   <children>
+      <TitledPane animated="false" collapsible="false" layoutX="14.0" layoutY="14.0" prefHeight="282.0" prefWidth="315.0" text="Cadastrar Pessoa">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TextField fx:id="tlb_nome" layoutX="103.0" layoutY="12.0" prefHeight="25.0" prefWidth="197.0" />
+                  <TextField fx:id="tlb_cpf" layoutX="103.0" layoutY="47.0" prefHeight="25.0" prefWidth="197.0" />
+                  <TextField fx:id="tlb_email" layoutX="103.0" layoutY="82.0" prefHeight="25.0" prefWidth="197.0" />
+                  <ComboBox fx:id="tlb_data_dia" layoutX="103.0" layoutY="187.0" prefHeight="25.0" prefWidth="55.0" promptText="22" />
+                  <ComboBox fx:id="tlb_data_mes" layoutX="167.0" layoutY="187.0" prefHeight="25.0" prefWidth="55.0" promptText="22" />
+                  <ComboBox fx:id="tlb_data_ano" layoutX="231.0" layoutY="187.0" prefHeight="25.0" prefWidth="68.0" promptText="1995" />
+                  <Label layoutX="5.0" layoutY="156.0" text="Confirm. Senha:" />
+                  <Label layoutX="53.0" layoutY="16.0" text="Nome:" />
+                  <Label layoutX="66.0" layoutY="51.0" text="CPF:" />
+                  <Label layoutX="58.0" layoutY="86.0" text="Email:" />
+                  <Label layoutX="54.0" layoutY="121.0" text="Senha:" />
+                  <Label layoutX="13.0" layoutY="191.0" text="Data de Nasc.:" />
+                  <PasswordField fx:id="tlb_senha" layoutX="103.0" layoutY="117.0" prefHeight="25.0" prefWidth="197.0" />
+                  <PasswordField fx:id="tlb_confirmar_senha" layoutX="103.0" layoutY="152.0" prefHeight="25.0" prefWidth="197.0" />
+                  <Label layoutX="37.0" layoutY="226.0" text="Endereço:" />
+                  <PasswordField fx:id="tlb_cep" alignment="CENTER" layoutX="103.0" layoutY="222.0" prefHeight="25.0" prefWidth="55.0" promptText="00000" />
+                  <PasswordField fx:id="tlb_cep_digito" alignment="CENTER" layoutX="167.0" layoutY="222.0" prefHeight="25.0" prefWidth="40.0" promptText="000" />
+                  <Button fx:id="btn_consultar" layoutX="216.0" layoutY="222.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="83.0" text="Consultar" />
+                  <Label layoutX="159.0" layoutY="226.0" text="-" />
+               </children>
+            </AnchorPane>
+        </content>
+      </TitledPane>
+      <TitledPane animated="false" collapsible="false" layoutX="339.0" layoutY="14.0" prefHeight="282.0" prefWidth="124.0" text="Selecione uma opção">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="256.0" prefWidth="107.0">
+               <children>
+                  <Button fx:id="btn_enderecos" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="101.0" text="Endereços" />
+                  <Button fx:id="btn_salvar" layoutX="14.0" layoutY="50.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="101.0" text="Salvar" />
+                  <Button fx:id="btn_cancelar" layoutX="14.0" layoutY="86.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="101.0" text="Cancelar" />
+               </children>
+            </AnchorPane>
+        </content>
+      </TitledPane>
+   </children>
+</AnchorPane>

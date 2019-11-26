@@ -22,7 +22,7 @@ public class ConnectionFactory {
     public Connection getConnection() {
         try {
             return DriverManager.getConnection(
-                    "jdbc:mysql://localhost/" + BANCO, USUARIO, SENHA);
+                    "jdbc:mysql://localhost/" + BANCO + "?useTimezone=true&serverTimezone=UTC", USUARIO, SENHA);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
