@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import registropessoas.connection.ConnectionFactory;
+import registropessoas.model.EnderecoModel;
 import registropessoas.model.PessoaModel;
 import registropessoas.model.PessoaTModel;
 
@@ -119,17 +120,23 @@ public class PessoaDAO implements DAO<PessoaModel> {
         return listPessoas;
     }
 
-    @Override
-    public boolean inserir(PessoaModel p) {
+    public boolean inserir(PessoaModel p, EnderecoModel e) {
         Connection conn = new ConnectionFactory().getConnection();
         
-        try (CallableStatement cstmt = conn.prepareCall("{call P_MANUT_PESSOA('I',?,?,?,?,?,?)}")){
-            cstmt.setInt(1, p.getCodigo());
-            cstmt.setString(2, p.getCpf());
-            cstmt.setString(3, p.getNome());
-            cstmt.setString(4, p.getSenha());
-            cstmt.setString(5, p.getData());
-            cstmt.setString(6, p.getEmail());
+        try (CallableStatement cstmt = conn.prepareCall("{call P_INSERE_PESSOA_ENDERECO(?,?,?,?,?,?,?,?,?,?,?,?)}")){
+            cstmt.setString(1, p.getCpf());
+            cstmt.setString(2, p.getNome());
+            cstmt.setString(3, p.getSenha());
+            cstmt.setString(4, p.getData());
+            cstmt.setString(5, p.getEmail());
+            
+            cstmt.setInt(6, e.getCep());
+            cstmt.setString(7, e.getLogradouro());
+            cstmt.setInt(8, e.getNumero());
+            cstmt.setString(9, e.getBairro());
+            cstmt.setString(10, e.getCidade());
+            cstmt.setString(11, e.getEstado());
+            cstmt.setString(12, e.getPais());
             
             cstmt.executeUpdate();
             

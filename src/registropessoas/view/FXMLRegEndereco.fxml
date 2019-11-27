@@ -6,14 +6,14 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="352.0" prefWidth="484.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="registropessoas.controller.FXMLRegEnderecoController">
+<AnchorPane id="AnchorPane" fx:id="anchorPane_endereco" prefHeight="352.0" prefWidth="484.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="registropessoas.controller.FXMLRegEnderecoController">
    <children>
       <TitledPane animated="false" collapsible="false" layoutX="14.0" layoutY="14.0" prefHeight="325.0" prefWidth="296.0" text="Cadastrar Endereço">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
                   <TextField fx:id="tlb_cep" alignment="CENTER" layoutX="87.0" layoutY="11.0" prefHeight="25.0" prefWidth="49.0" promptText="00000" />
+                  <TextField fx:id="tlb_cep_digito" alignment="CENTER" layoutX="145.0" layoutY="11.0" prefHeight="25.0" prefWidth="32.0" promptText="000" />
                   <TextField fx:id="tlb_logradouro" layoutX="87.0" layoutY="47.0" prefHeight="25.0" prefWidth="195.0" />
                   <TextField fx:id="tlb_numero" layoutX="87.0" layoutY="83.0" prefHeight="25.0" prefWidth="49.0" />
                   <TextField fx:id="tlb_bairro" layoutX="87.0" layoutY="119.0" prefHeight="25.0" prefWidth="195.0" />
@@ -29,7 +29,6 @@
                   <Label layoutX="40.0" layoutY="195.0" text="Estado:" />
                   <Label layoutX="55.0" layoutY="231.0" text="País:" />
                   <Label layoutX="37.0" layoutY="267.0" text="Código:" />
-                  <TextField fx:id="tlb_cep_digito" alignment="CENTER" layoutX="145.0" layoutY="11.0" prefHeight="25.0" prefWidth="32.0" promptText="000" />
                   <Label layoutX="138.0" layoutY="15.0" text="-" />
                </children>
             </AnchorPane>
@@ -39,7 +38,7 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="134.0">
                <children>
-                  <Button fx:id="btn_salvar" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="121.0" text="Salvar" />
+                  <Button fx:id="btn_salvar" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#action_btn_salvar" prefHeight="25.0" prefWidth="121.0" text="Salvar" />
                   <Button fx:id="btn_cancelar" layoutX="14.0" layoutY="49.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="121.0" text="Cancelar" />
                </children>
             </AnchorPane>

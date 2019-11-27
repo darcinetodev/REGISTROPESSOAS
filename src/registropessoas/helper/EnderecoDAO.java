@@ -27,7 +27,6 @@ public class EnderecoDAO implements DAO {
         return null;
     }
 
-    @Override
     public boolean inserir(Object o) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
