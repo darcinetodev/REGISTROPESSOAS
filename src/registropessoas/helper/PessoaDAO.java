@@ -9,18 +9,21 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import registropessoas.connection.ConnectionFactory;
+import registropessoas.model.PessoaModel;
 import registropessoas.model.PessoaTModel;
 
 /**
  *
  * @author neto_
  */
-public class PessoaDAO implements DAO {
+public class PessoaDAO implements DAO<PessoaModel> {
 
     @Override
     public List lerTudo() {
@@ -34,7 +37,7 @@ public class PessoaDAO implements DAO {
                 
 		while(rs.next()){
                     listPessoas.add(new PessoaTModel(rs.getInt("PES_CODIGO"),
-                                                     rs.getDouble("PES_CPF"),
+                                                     rs.getString("PES_CPF"),
                                                      rs.getString("PES_NOME"),
                                                      rs.getDate("PES_DATA_NASCIMENTO"),
                                                      rs.getString("PES_EMAIL"),
@@ -44,6 +47,42 @@ public class PessoaDAO implements DAO {
                 cstmt.close();
                 conn.close();
             }
+        } catch (SQLException ex) {
+            Logger.getLogger(PessoaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return listPessoas;
+    }
+    
+    @Override
+    public List lerCodigo(int codigo) {
+        Connection conn = new ConnectionFactory().getConnection();
+        
+        List<PessoaModel> listPessoas = new ArrayList<>();
+        
+        try (CallableStatement cstmt = conn.prepareCall("{call P_OBTEM_PESSOAS(?,null,null)}")) {
+            cstmt.setInt(1, codigo);
+                
+            ResultSet rs = cstmt.executeQuery();
+                
+            while(rs.next()){
+                PessoaModel pm = new PessoaModel();
+                
+                pm.setCodigo(rs.getInt("PES_CODIGO"));
+                pm.setCpf(rs.getString("PES_CPF"));
+                pm.setNome(rs.getString("PES_NOME"));
+                
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+                pm.setData(formatter.format(new Date(rs.getDate("PES_DATA_NASCIMENTO").getTime() + (24*60*60*1000))));
+                
+                pm.setEmail(rs.getString("PES_EMAIL"));
+                pm.setCodEndereco(rs.getInt("BRP_PES_END_CODIGO"));
+                
+                listPessoas.add(pm);
+            }
+                
+            cstmt.close();
+            conn.close();
         } catch (SQLException ex) {
             Logger.getLogger(PessoaDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -56,25 +95,23 @@ public class PessoaDAO implements DAO {
         
         List<PessoaTModel> listPessoas = new ArrayList();
         
-        try {
-            try (CallableStatement cstmt = conn.prepareCall("{call P_OBTEM_PESSOAS(null,?,?)}")) {
-                cstmt.setString(1, dataIni);
-                cstmt.setString(2, dataFim);
+        try (CallableStatement cstmt = conn.prepareCall("{call P_OBTEM_PESSOAS(null,?,?)}")) {
+            cstmt.setString(1, dataIni);
+            cstmt.setString(2, dataFim);
                 
-                ResultSet rs = cstmt.executeQuery();
+            ResultSet rs = cstmt.executeQuery();
                 
-		while(rs.next()){
-                    listPessoas.add(new PessoaTModel(rs.getInt("PES_CODIGO"),
-                                                     rs.getDouble("PES_CPF"),
-                                                     rs.getString("PES_NOME"),
-                                                     rs.getDate("PES_DATA_NASCIMENTO"),
-                                                     rs.getString("PES_EMAIL"),
-                                                     rs.getInt("BRP_PES_END_CODIGO")));
-		}
-                
-                cstmt.close();
-                conn.close();
+            while(rs.next()){
+                listPessoas.add(new PessoaTModel(rs.getInt("PES_CODIGO"),
+                                                 rs.getString("PES_CPF"),
+                                                 rs.getString("PES_NOME"),
+                                                 rs.getDate("PES_DATA_NASCIMENTO"),
+                                                 rs.getString("PES_EMAIL"),
+                                                 rs.getInt("BRP_PES_END_CODIGO")));
             }
+                
+            cstmt.close();
+            conn.close();
         } catch (SQLException ex) {
             Logger.getLogger(PessoaDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -83,18 +120,67 @@ public class PessoaDAO implements DAO {
     }
 
     @Override
-    public boolean inserir(Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean inserir(PessoaModel p) {
+        Connection conn = new ConnectionFactory().getConnection();
+        
+        try (CallableStatement cstmt = conn.prepareCall("{call P_MANUT_PESSOA('I',?,?,?,?,?,?)}")){
+            cstmt.setInt(1, p.getCodigo());
+            cstmt.setString(2, p.getCpf());
+            cstmt.setString(3, p.getNome());
+            cstmt.setString(4, p.getSenha());
+            cstmt.setString(5, p.getData());
+            cstmt.setString(6, p.getEmail());
+            
+            cstmt.executeUpdate();
+            
+            cstmt.close();
+            conn.close();
+	} catch (SQLException ex) {
+            Logger.getLogger(PessoaDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+	}
+        return true;
     }
 
     @Override
-    public boolean editar(Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean editar(PessoaModel p) {
+        Connection conn = new ConnectionFactory().getConnection();
+        
+        try (CallableStatement cstmt = conn.prepareCall("{call P_MANUT_PESSOA('A',?,?,?,?,?,?)}")){
+            cstmt.setInt(1, p.getCodigo());
+            cstmt.setString(2, p.getCpf());
+            cstmt.setString(3, p.getNome());
+            cstmt.setString(4, p.getSenha());
+            cstmt.setString(5, p.getData());
+            cstmt.setString(6, p.getEmail());
+            
+            cstmt.executeUpdate();
+            
+            cstmt.close();
+            conn.close();
+	} catch (SQLException ex) {
+            Logger.getLogger(PessoaDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+	}
+        return true;
     }
 
     @Override
     public boolean deletar(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Connection conn = new ConnectionFactory().getConnection();
+        
+        try (CallableStatement cstmt = conn.prepareCall("{call P_MANUT_PESSOA('R',?,null,null,null,null,null)}")){
+            cstmt.setInt(1, id);
+            
+            cstmt.executeUpdate();
+            
+            cstmt.close();
+            conn.close();
+	} catch (SQLException ex) {
+            Logger.getLogger(PessoaDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+	}
+        return true;
     }
     
 }

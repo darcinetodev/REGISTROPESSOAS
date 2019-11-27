@@ -10,12 +10,14 @@ import java.util.List;
 /**
  *
  * @author neto_
+ * @param <T>
  */
-public interface DAO {
+public interface DAO<T> {
     
     public List lerTudo();
-    public boolean inserir(Object o);
-    public boolean editar(Object o);
+    public List lerCodigo(int codigo);
+    public boolean inserir(T o);
+    public boolean editar(T o);
     public boolean deletar(int id);
     
 }

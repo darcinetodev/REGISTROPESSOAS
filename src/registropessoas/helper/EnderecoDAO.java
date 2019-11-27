@@ -17,6 +17,11 @@ public class EnderecoDAO implements DAO {
     public List lerTudo() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
+    @Override
+    public List lerCodigo(int codigo){
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
     public Object idPessoa(int id) {
         return null;

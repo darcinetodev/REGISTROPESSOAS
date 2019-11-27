@@ -1,4 +1,3 @@
-DROP procedure IF EXISTS `P_INSERE_PESSOA_ENDERECO`;
 CREATE PROCEDURE `P_INSERE_PESSOA_ENDERECO` (P_CPF        DOUBLE,
 											P_NOME       VARCHAR(50),
 											P_SENHA      VARCHAR(32),
@@ -12,6 +11,7 @@ CREATE PROCEDURE `P_INSERE_PESSOA_ENDERECO` (P_CPF        DOUBLE,
 											P_ESTADO     VARCHAR(50),
 											P_PAIS       VARCHAR(50))
 BEGIN
+DECLARE L_CODIGO INT;
 DECLARE EXIT HANDLER FOR SQLEXCEPTION
     BEGIN
         ROLLBACK;  /* Efetua a remoção de todas as alterações em caso de erro */

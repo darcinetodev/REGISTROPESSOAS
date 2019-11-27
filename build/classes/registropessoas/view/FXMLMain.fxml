@@ -8,7 +8,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="309.0" prefWidth="691.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="registropessoas.controller.FXMLMainController">
    <children>
-      <TableView fx:id="tbv_pessoas" layoutX="14.0" layoutY="13.0" prefHeight="284.0" prefWidth="418.0">
+      <TableView fx:id="tbv_pessoas" layoutX="14.0" layoutY="13.0" onKeyPressed="#keyPress_tbv_pessoas" prefHeight="284.0" prefWidth="418.0">
         <columns>
           <TableColumn fx:id="clm_codigo_tbv_pessoas" prefWidth="76.0" text="Código" />
           <TableColumn fx:id="clm_nome_tbv_pessoas" prefWidth="330.0" text="Nome" />
@@ -46,9 +46,9 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="211.0" prefWidth="226.0">
                      <children>
-                        <Button fx:id="btn_editar" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#action_btn_editar" prefHeight="25.0" prefWidth="198.0" text="Editar" />
-                        <Button fx:id="btn_deletar" layoutX="14.0" layoutY="50.0" mnemonicParsing="false" onAction="#action_btn_deletar" prefHeight="25.0" prefWidth="198.0" text="Deletar" />
-                        <Button fx:id="btn_verMais" layoutX="14.0" layoutY="86.0" mnemonicParsing="false" onAction="#action_btn_verMais" prefHeight="25.0" prefWidth="198.0" text="Ver mais" />
+                        <Button fx:id="btn_editar" disable="true" layoutX="14.0" layoutY="50.0" mnemonicParsing="false" onAction="#action_btn_editar" prefHeight="25.0" prefWidth="198.0" text="Editar" />
+                        <Button fx:id="btn_deletar" layoutX="14.0" layoutY="86.0" mnemonicParsing="false" onAction="#action_btn_deletar" prefHeight="25.0" prefWidth="198.0" text="Deletar" />
+                        <Button fx:id="btn_inserir" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#action_btn_inserir" prefHeight="25.0" prefWidth="198.0" text="Inserir" />
                         <Button fx:id="btn_pesquisar" layoutX="14.0" layoutY="122.0" mnemonicParsing="false" onAction="#action_btn_pesquisar" prefHeight="25.0" prefWidth="198.0" text="Pesquisar" />
                      </children>
                   </AnchorPane>

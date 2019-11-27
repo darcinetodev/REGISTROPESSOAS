@@ -9,7 +9,6 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
@@ -20,15 +19,15 @@ import javafx.beans.property.SimpleStringProperty;
 public class PessoaTModel {
     
     private final SimpleIntegerProperty codigo;
-    private final SimpleDoubleProperty cpf;
+    private final SimpleStringProperty cpf;
     private final SimpleStringProperty nome;
     private final SimpleStringProperty data;
     private final SimpleStringProperty email;
     private final SimpleIntegerProperty codEndereco;
     
-    public PessoaTModel(int codigo, double cpf, String nome, Date data, String email, int codEndereco) {
+    public PessoaTModel(int codigo, String cpf, String nome, Date data, String email, int codEndereco) {
         this.codigo = new SimpleIntegerProperty(codigo);
-        this.cpf = new SimpleDoubleProperty(cpf);
+        this.cpf = new SimpleStringProperty(cpf);
         this.nome = new SimpleStringProperty(nome);
         this.data = new SimpleStringProperty(dataParaString(data));
         this.email = new SimpleStringProperty(email);
@@ -45,7 +44,7 @@ public class PessoaTModel {
         return codigo;
     }
 
-    public SimpleDoubleProperty CpfProperty() {
+    public SimpleStringProperty CpfProperty() {
         return cpf;
     }
 
@@ -69,7 +68,7 @@ public class PessoaTModel {
         return codigo.get();
     }
 
-    public Double getCpf() {
+    public String getCpf() {
         return cpf.get();
     }
 

@@ -5,8 +5,6 @@
  */
 package registropessoas.model;
 
-import java.util.Date;
-
 /**
  *
  * @author neto_
@@ -14,10 +12,10 @@ import java.util.Date;
 public class PessoaModel {
     
     private int codigo;
-    private Double cpf;
+    private String cpf;
     private String nome;
     private String senha;
-    private Date data;
+    private String data;
     private String email;
     private int codEndereco;
 
@@ -29,11 +27,11 @@ public class PessoaModel {
         this.codigo = codigo;
     }
 
-    public Double getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(Double cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 
@@ -53,11 +51,11 @@ public class PessoaModel {
         this.senha = senha;
     }
 
-    public Date getData() {
+    public String getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(String data) {
         this.data = data;
     }
 
