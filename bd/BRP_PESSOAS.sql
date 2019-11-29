@@ -24,7 +24,7 @@ DROP TABLE IF EXISTS `brp_pessoas`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `brp_pessoas` (
   `pes_codigo` int(11) NOT NULL AUTO_INCREMENT,
-  `pes_cpf` double NOT NULL,
+  `pes_cpf` varchar(11) NOT NULL,
   `pes_nome` varchar(50) NOT NULL,
   `pes_senha` varchar(32) NOT NULL,
   `pes_data_nascimento` date NOT NULL,
@@ -35,7 +35,7 @@ CREATE TABLE `brp_pessoas` (
   UNIQUE KEY `pes_cpf_UNIQUE` (`pes_cpf`),
   KEY `fk_brp_pes_end_codigo_idx` (`brp_pes_end_codigo`),
   CONSTRAINT `fk_brp_pes_end_codigo` FOREIGN KEY (`brp_pes_end_codigo`) REFERENCES `brp_enderecos` (`end_pes_codigo`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,6 +44,7 @@ CREATE TABLE `brp_pessoas` (
 
 LOCK TABLES `brp_pessoas` WRITE;
 /*!40000 ALTER TABLE `brp_pessoas` DISABLE KEYS */;
+INSERT INTO `brp_pessoas` VALUES (9,'5318966179','NETO SCHNEIDERR','123','1995-12-01',9,'NETO@NETO.COM');
 /*!40000 ALTER TABLE `brp_pessoas` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -56,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-11-24 21:44:58
+-- Dump completed on 2019-11-28 22:59:39

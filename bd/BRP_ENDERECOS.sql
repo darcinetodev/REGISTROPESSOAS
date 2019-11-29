@@ -31,10 +31,10 @@ CREATE TABLE `brp_enderecos` (
   `end_cidade` varchar(45) NOT NULL,
   `end_estado` varchar(45) NOT NULL,
   `end_pais` varchar(45) NOT NULL,
-  `end_pes_codigo` int(11) NOT NULL,
+  `end_pes_codigo` int(11) DEFAULT NULL,
   PRIMARY KEY (`end_codigo`),
   KEY `fk_end_pes_codigo_idx` (`end_pes_codigo`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,7 +43,7 @@ CREATE TABLE `brp_enderecos` (
 
 LOCK TABLES `brp_enderecos` WRITE;
 /*!40000 ALTER TABLE `brp_enderecos` DISABLE KEYS */;
-INSERT INTO `brp_enderecos` VALUES (3,58030218,'RUA GRAUDA DA SILVA',214,'NOVAIS','JOÃO PESSOA','PARAÍBA','BRASIL',4),(4,6598524,'RUA GRAUDA SILVA',214,'NOVAIS','JOÃO PESSOA','PARAÍBA','BRASIL',5),(5,58000000,'RUA GRAUDA SILVA',214,'NOVAIS','JOÃO PESSOA','PARAÍBA','BRASIL',7),(6,58123652,'RUA GRAUDA SILVA',214,'NOVAIS','JOÃO PESSOA','PARAÍBA','BRASIL',7);
+INSERT INTO `brp_enderecos` VALUES (9,58030218,'ARGEMIRO',1711,'BESSA','JOÃO PESSOA','PB','BRASIL',9),(10,60258159,'RUA AMOR',154,'PAIXAO','JP','PB','BR',0),(11,5343464,'64',64,'646','464','646','46',0);
 /*!40000 ALTER TABLE `brp_enderecos` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -56,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-11-24 21:44:58
+-- Dump completed on 2019-11-28 22:59:39

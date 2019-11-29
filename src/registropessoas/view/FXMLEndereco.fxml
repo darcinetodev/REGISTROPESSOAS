@@ -6,7 +6,6 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane id="AnchorPane" prefHeight="309.0" prefWidth="691.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="registropessoas.controller.FXMLEnderecoController">
    <children>
       <TableView fx:id="tbv_enderecos" layoutX="14.0" layoutY="14.0" prefHeight="281.0" prefWidth="475.0">
@@ -24,9 +23,7 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="182.0" prefWidth="121.0">
                <children>
-                  <Button layoutX="11.0" layoutY="13.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" text="Adicionar" />
-                  <Button layoutX="12.0" layoutY="48.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" text="Editar" />
-                  <Button layoutX="12.0" layoutY="83.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" text="Remover" />
+                  <Button fx:id="btn_remover" layoutX="11.0" layoutY="14.0" mnemonicParsing="false" onAction="#action_btn_remover" prefHeight="25.0" prefWidth="149.0" text="Remover" />
                </children>
             </AnchorPane>
         </content>

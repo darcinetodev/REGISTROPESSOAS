@@ -15,7 +15,6 @@ import java.util.List;
 public interface DAO<T> {
     
     public List lerTudo();
-    public List lerCodigo(int codigo);
     public boolean editar(T o);
     public boolean deletar(int id);
     

@@ -34,6 +34,8 @@ import registropessoas.model.PessoaTModel;
  */
 public class FXMLMainController implements Initializable {
     
+    public static FXMLMainController fXMLMainController;
+    
     @FXML
     private Button btn_inserir;
 
@@ -124,17 +126,11 @@ public class FXMLMainController implements Initializable {
             tbv_pessoas.setItems(listaDeClientes(pdao.lerTudo()));
     }
     
-    
-    @FXML
-    void keyPress_tbv_pessoas(ActionEvent event) {
-        btn_editar.setDisable(false);
-    }
-    
     private ObservableList<PessoaTModel> listaDeClientes(List<PessoaTModel> list) {
         return FXCollections.observableArrayList(list);
     }
     
-    private void carregaView(){
+    public void carregaView(){
         PessoaDAO pdao = new PessoaDAO();
         tbv_pessoas.getColumns().removeAll();
         tbv_pessoas.setItems(listaDeClientes(pdao.lerTudo()));
@@ -142,6 +138,8 @@ public class FXMLMainController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        fXMLMainController = this;
+        
         clm_codigo_tbv_pessoas.setCellValueFactory(new PropertyValueFactory<>("codigo"));
         clm_nome_tbv_pessoas.setCellValueFactory(new PropertyValueFactory<>("nome"));
         

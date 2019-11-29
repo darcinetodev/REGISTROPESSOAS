@@ -34,7 +34,7 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="273.0" prefWidth="148.0">
                <children>
-                  <Button fx:id="btn_enderecos" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="121.0" text="Endereços" />
+                  <Button fx:id="btn_enderecos" disable="true" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#action_btn_enderecos" prefHeight="25.0" prefWidth="121.0" text="Endereços" />
                   <Button fx:id="btn_salvar" layoutX="14.0" layoutY="50.0" mnemonicParsing="false" onAction="#action_btn_salvar" prefHeight="25.0" prefWidth="121.0" text="Salvar" />
                   <Button fx:id="btn_cancelar" layoutX="14.0" layoutY="86.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="121.0" text="Cancelar" />
                </children>

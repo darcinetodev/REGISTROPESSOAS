@@ -19,7 +19,7 @@ public class REGISTROPESSOAS extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("view/FXMLMain.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("view/FXMLLogin.fxml"));
         
         Scene scene = new Scene(root);
         stage.setResizable(false);

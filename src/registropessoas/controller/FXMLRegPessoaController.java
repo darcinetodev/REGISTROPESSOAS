@@ -15,13 +15,18 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import registropessoas.REGISTROPESSOAS;
+import registropessoas.helper.EnderecoDAO;
 import registropessoas.helper.PessoaDAO;
 import registropessoas.model.EnderecoModel;
 import registropessoas.model.PessoaModel;
@@ -35,6 +40,8 @@ public class FXMLRegPessoaController implements Initializable {
     
     private PessoaModel pm;
     private EnderecoModel em;
+    private boolean chave = false;
+    public static FXMLRegPessoaController fXMLRegPessoaController;
     
     @FXML
     private PasswordField tlb_senha;
@@ -71,7 +78,12 @@ public class FXMLRegPessoaController implements Initializable {
     
     @FXML
     void action_btn_salvar(ActionEvent event) {
+        if (chave)
+            salvarEdicao();
+        else
+            salvarNovo();
         
+        FXMLMainController.fXMLMainController.carregaView();
     }
     
     @FXML
@@ -88,30 +100,60 @@ public class FXMLRegPessoaController implements Initializable {
             pm.setEmail(tlb_email.getText());
         
         if ((!(tlb_senha.getText().trim().equals("") && tlb_confirmar_senha.getText().trim().equals(""))) &&
-              (tlb_senha.getText().trim().equals(tlb_confirmar_senha.getText().trim())))
+            (!(tlb_senha.getText().trim().equals(tlb_confirmar_senha.getText().trim()))))
             pm.setSenha(tlb_confirmar_senha.getText());
         
         if (dp_data.getValue() != null)
             pm.setData(dp_data.getValue().toString().replaceAll("/", "-"));
-                    
-        anchorPane_pessoas.getChildren().clear();
-
+        
+        Parent root;
+        try {        
+            root = FXMLLoader.load(REGISTROPESSOAS.class.getResource("view/FXMLRegEndereco.fxml"));
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setResizable(false);
+            stage.sizeToScene();
+            stage.setTitle("Registro de Pessoas - Inserir Endereco");
+            stage.setScene(scene);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.showAndWait();
+            //((Node)(event.getSource())).getScene().getWindow().hide();
+        }
+        catch (IOException e) {
+            System.err.println(e);
+        }
+    }
+    
+    @FXML
+    void action_btn_enderecos(ActionEvent event) {
         try {
-            AnchorPane tela = (AnchorPane) FXMLLoader.load(REGISTROPESSOAS.class.getResource("view/FXMLRegEndereco.fxml"));
-            anchorPane_pessoas.getChildren().add(tela);
-        } catch (IOException e) {
-            e.printStackTrace();
+            FXMLLoader loader = new FXMLLoader(REGISTROPESSOAS.class.getResource("view/FXMLEndereco.fxml"));
+            Parent root = loader.load();
+            
+            FXMLEnderecoController controller = loader.getController();
+            controller.initTela(pm.getCodigo());
+            
+            Stage stage = new Stage();
+            stage.setResizable(false);
+            stage.sizeToScene();
+            stage.setTitle("Registro de Pessoas - Endereços");
+            stage.setScene(new Scene(root));
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.showAndWait();
+            //((Node)(event.getSource())).getScene().getWindow().hide();
+        }
+        catch (IOException e) {
+            System.err.println(e);
         }
     }
     
     public void recebeEndereco(EnderecoModel em) {
-        tlb_nome.setText(pm.getNome());
-        tlb_cpf.setText(pm.getCpf());
-        tlb_email.setText(pm.getEmail());
-        dp_data.setValue(LocalDate.parse(pm.getData(), DateTimeFormatter.ISO_LOCAL_DATE));
-        
-        em = new EnderecoModel();
-        this.em = em;
+        if (chave) {
+            EnderecoDAO edao = new EnderecoDAO();
+            edao.inserir(em,pm.getCodigo());
+        } else {
+            this.em = em;
+        }
     }
     
     public void iniTela(int codigo){
@@ -124,6 +166,11 @@ public class FXMLRegPessoaController implements Initializable {
             tlb_cpf.setText(pm.getCpf());
             tlb_email.setText(pm.getEmail());
             dp_data.setValue(LocalDate.parse(pm.getData(), DateTimeFormatter.ISO_LOCAL_DATE));
+        }
+        
+        if (pm != null) {
+            chave = true;
+            btn_enderecos.setDisable(false);
         }
     }
     
@@ -169,7 +216,7 @@ public class FXMLRegPessoaController implements Initializable {
             !(tlb_cpf.getText().trim().equals(""))   ||
             !(tlb_email.getText().trim().equals("")) ||
             !(tlb_senha.getText().trim().equals("") && tlb_confirmar_senha.getText().trim().equals(""))){
-                if (!(tlb_senha.getText().trim().equals(tlb_confirmar_senha.getText().trim()))) {
+                if ((tlb_senha.getText().trim().equals(tlb_confirmar_senha.getText().trim()))) {
                     pm.setNome(tlb_nome.getText());
                     pm.setCpf(tlb_cpf.getText());
                     pm.setEmail(tlb_email.getText());
@@ -208,7 +255,7 @@ public class FXMLRegPessoaController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        fXMLRegPessoaController = this;
     }    
     
 }

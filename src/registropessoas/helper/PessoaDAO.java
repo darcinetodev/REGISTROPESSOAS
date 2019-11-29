@@ -55,7 +55,6 @@ public class PessoaDAO implements DAO<PessoaModel> {
         return listPessoas;
     }
     
-    @Override
     public List lerCodigo(int codigo) {
         Connection conn = new ConnectionFactory().getConnection();
         
@@ -63,6 +62,42 @@ public class PessoaDAO implements DAO<PessoaModel> {
         
         try (CallableStatement cstmt = conn.prepareCall("{call P_OBTEM_PESSOAS(?,null,null)}")) {
             cstmt.setInt(1, codigo);
+                
+            ResultSet rs = cstmt.executeQuery();
+                
+            while(rs.next()){
+                PessoaModel pm = new PessoaModel();
+                
+                pm.setCodigo(rs.getInt("PES_CODIGO"));
+                pm.setCpf(rs.getString("PES_CPF"));
+                pm.setNome(rs.getString("PES_NOME"));
+                
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+                pm.setData(formatter.format(new Date(rs.getDate("PES_DATA_NASCIMENTO").getTime() + (24*60*60*1000))));
+                
+                pm.setEmail(rs.getString("PES_EMAIL"));
+                pm.setCodEndereco(rs.getInt("BRP_PES_END_CODIGO"));
+                
+                listPessoas.add(pm);
+            }
+                
+            cstmt.close();
+            conn.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(PessoaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return listPessoas;
+    }
+    
+    public List lerLogin(String usuario, String senha) {
+        Connection conn = new ConnectionFactory().getConnection();
+        
+        List<PessoaModel> listPessoas = new ArrayList<>();
+        
+        try (CallableStatement cstmt = conn.prepareCall("{call P_LOGIN_PESSOA(?,?)}")) {
+            cstmt.setString(1, usuario);
+            cstmt.setString(2, senha);
                 
             ResultSet rs = cstmt.executeQuery();
                 

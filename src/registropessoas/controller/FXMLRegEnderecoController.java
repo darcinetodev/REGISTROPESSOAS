@@ -5,18 +5,14 @@
  */
 package registropessoas.controller;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import registropessoas.REGISTROPESSOAS;
 import registropessoas.model.EnderecoModel;
 
 /**
@@ -78,18 +74,7 @@ public class FXMLRegEnderecoController implements Initializable {
         em.setEstado(tlb_estado.getText());
         em.setPais(tlb_pais.getText());
         
-        FXMLRegPessoaController r = new FXMLRegPessoaController();
-        r.recebeEndereco(em);
-        
-        anchorPane_endereco.getChildren().clear();
-
-        try {
-            AnchorPane tela = (AnchorPane) FXMLLoader.load(REGISTROPESSOAS.class.getResource("view/FXMLRegPessoa.fxml"));
-            
-            anchorPane_endereco.getChildren().add(tela);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        FXMLRegPessoaController.fXMLRegPessoaController.recebeEndereco(em);
         
         return true;
     }
@@ -99,7 +84,7 @@ public class FXMLRegEnderecoController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
     }    
     
 }
